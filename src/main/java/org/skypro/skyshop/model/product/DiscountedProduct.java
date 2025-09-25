@@ -3,8 +3,8 @@ package org.skypro.skyshop.model.product;
 import java.util.UUID;
 
 public class DiscountedProduct extends Product {
-    private final int baseAmount;
-    private final int discount;
+    private final int baseAmount;   // Базовая цена
+    private final int discount;     // Скидка
 
     public DiscountedProduct(UUID id, String name, int baseAmount, int discount) {
         super(id, name);

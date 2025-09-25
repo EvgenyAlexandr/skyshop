@@ -8,30 +8,25 @@ import java.util.UUID;
 
 public class Article implements Searchable {
 
-    private static String TERM_ARTICLE = "ARTICLE";
-    private final UUID id;
-    private final String title;
-    private final String text;
+    private static String   TERM_ARTICLE = "ARTICLE";
+    private final UUID      id;        // UUID — специальный вид уникального идентификатора
+    private final String    title;     // Название Статьи
+    private final String    text;      // Текст статьи
 
+    // Конструктор
     public Article(UUID id, String title, String text) {
-        this.id = id;
-        this.title = title;
-        this.text = text;
+        this.id     = id;
+        this.title  = title;
+        this.text   = text;
+    }
+
+    @Override
+    public UUID getId() {
+        return id;
     }
 
     public String getTitle() {
         return title;
-    }
-
-    @Override
-    public String toString() {
-        return title + '\n' + text;
-    }
-
-    @JsonIgnore
-    @Override
-    public String searchTerm() {
-        return toString();
     }
 
     @JsonIgnore
@@ -45,6 +40,13 @@ public class Article implements Searchable {
         return getTitle();
     }
 
+    @JsonIgnore
+    @Override
+    public String searchTerm() {
+        return toString();
+    }
+
+    // Сравнение объектов класса
     @Override
     public boolean equals(Object other) {
         if (this == other) return true;
@@ -53,13 +55,15 @@ public class Article implements Searchable {
         return Objects.equals(title, art.getName());
     }
 
+
     @Override
     public int hashCode() {
         return Objects.hashCode(title);
     }
 
+    // Строковое представление объекта
     @Override
-    public UUID getId() {
-        return id;
+    public String toString() {
+        return title + '\n' + text;
     }
 }

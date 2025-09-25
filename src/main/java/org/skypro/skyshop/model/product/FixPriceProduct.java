@@ -3,7 +3,7 @@ package org.skypro.skyshop.model.product;
 import java.util.UUID;
 
 public class FixPriceProduct extends Product {
-    private static final int FIX_PRICE_PRODUCT = 100;
+    private static final int FIX_PRICE_PRODUCT = 100; // Фиксированная цена
 
     public FixPriceProduct(UUID id, String name) {
         super(id, name);
