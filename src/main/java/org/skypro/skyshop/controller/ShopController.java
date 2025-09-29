@@ -23,6 +23,7 @@ public class ShopController {
 
     private final StorageService storageService;
     private final SearchService searchService;
+
     public ShopController(StorageService storageService, SearchService searchService) {
         this.storageService = storageService;
         this.searchService = searchService;

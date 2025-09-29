@@ -2,7 +2,9 @@ package org.skypro.skyshop.model.product;
 
 import java.util.UUID;
 
+///  Продукты с фиксированной ценой
 public class FixPriceProduct extends Product {
+
     private static final int FIX_PRICE_PRODUCT = 100; // Фиксированная цена
 
     // Конструктор

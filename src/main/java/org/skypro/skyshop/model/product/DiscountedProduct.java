@@ -2,6 +2,7 @@ package org.skypro.skyshop.model.product;
 
 import java.util.UUID;
 
+/// Товары со скидкой
 public class DiscountedProduct extends Product {
     private final int baseAmount;   // Базовая цена
     private final int discount;     // Скидка

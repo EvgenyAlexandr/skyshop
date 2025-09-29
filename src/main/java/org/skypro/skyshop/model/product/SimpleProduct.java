@@ -2,6 +2,7 @@ package org.skypro.skyshop.model.product;
 
 import java.util.UUID;
 
+/// Простой продукт
 public class SimpleProduct extends Product {
     private final int price;    //Цена
 
