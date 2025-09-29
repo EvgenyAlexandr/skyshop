@@ -32,13 +32,13 @@ public class StorageService {
     }
 
     private void addPoduct() {
-        SimpleProduct sausage = new SimpleProduct(UUID.randomUUID(), "Колбаса", 20);
-        SimpleProduct bread = new SimpleProduct(UUID.randomUUID(), "Хлеб", 6);
-        FixPriceProduct meat = new FixPriceProduct(UUID.randomUUID(), "Мясо");
-        FixPriceProduct beer = new FixPriceProduct(UUID.randomUUID(), "Пиво");
-        Product tomatoes = new DiscountedProduct(UUID.randomUUID(), "Помидоры", 12, 50);
-        Product potato = new DiscountedProduct(UUID.randomUUID(), "Картофель", 45, 10);
-        Product vegetableFirst = new DiscountedProduct(UUID.randomUUID(), "овощь", 45, 10);
+        SimpleProduct sausage   = new SimpleProduct(UUID.randomUUID(), "Колбаса", 20);
+        SimpleProduct bread     = new SimpleProduct(UUID.randomUUID(), "Хлеб", 6);
+        FixPriceProduct meat    = new FixPriceProduct(UUID.randomUUID(), "Мясо");
+        FixPriceProduct beer    = new FixPriceProduct(UUID.randomUUID(), "Пиво");
+        Product tomatoes        = new DiscountedProduct(UUID.randomUUID(), "Помидоры", 12, 50);
+        Product potato          = new DiscountedProduct(UUID.randomUUID(), "Картофель", 45, 10);
+        Product vegetableFirst  = new DiscountedProduct(UUID.randomUUID(), "овощь", 45, 10);
         Product vegetableSecond = new DiscountedProduct(UUID.randomUUID(), "яблоко", 45, 10);
 
         productMap.put(sausage.getId(), sausage);
@@ -53,10 +53,10 @@ public class StorageService {
 
     private void addArticle() {
         Article tomatoesTheBest = new Article(UUID.randomUUID(), "Томаты", "Помидоры лучшие овощи");
-        Article potatoTheBest = new Article(UUID.randomUUID(), "Картофель", "Картофель хороший овощь");
-        Article beerArticle = new Article(UUID.randomUUID(), "Пиво", "Напиток, но не овощь и все таки ов");
-        Article earth = new Article(UUID.randomUUID(), "Земля", "На планете Земля растут овощи и очень большие овощи");
-        Article apple = new Article(UUID.randomUUID(), "Яблоко", "На планете Земля растут овощи и очень большие овощи");
+        Article potatoTheBest   = new Article(UUID.randomUUID(), "Картофель", "Картофель хороший овощь");
+        Article beerArticle     = new Article(UUID.randomUUID(), "Пиво", "Напиток, но не овощь и все таки ов");
+        Article earth           = new Article(UUID.randomUUID(), "Земля", "На планете Земля растут овощи и очень большие овощи");
+        Article apple           = new Article(UUID.randomUUID(), "Яблоко", "На планете Земля растут овощи и очень большие овощи");
         articleMap.put(tomatoesTheBest.getId(), tomatoesTheBest);
         articleMap.put(potatoTheBest.getId(), potatoTheBest);
         articleMap.put(beerArticle.getId(), beerArticle);

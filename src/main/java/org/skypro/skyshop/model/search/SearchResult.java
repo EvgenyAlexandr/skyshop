@@ -4,10 +4,11 @@ import java.util.Objects;
 import java.util.UUID;
 
 public final class SearchResult {
-    private final UUID      id;
-    private final String    name;
-    private final String    contentType;
+    private final UUID      id;             // UUID — уникального идентификатор
+    private final String    name;           //
+    private final String    contentType;    //
 
+    // Конструктор
     public SearchResult(UUID id, String name, String contentType) {
         this.id          = id;
         this.name        = name;
@@ -30,6 +31,7 @@ public final class SearchResult {
         return contentType;
     }
 
+    // Сравнение объектов этого класса
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -42,6 +44,7 @@ public final class SearchResult {
         return Objects.hash(id, name, contentType);
     }
 
+    // Строковое представление объекта
     @Override
     public String toString() {
         return "SearchResult{" +
