@@ -6,12 +6,12 @@ import java.util.UUID;
 public class SimpleProduct extends Product {
     private final int price;    //Цена
 
-    public SimpleProduct(UUID id, String name, int amount) {
+    public SimpleProduct(UUID id, String name, int price) {
         super(id, name);
-        if (amount < 1) {
+        if (price < 1) {
             throw new IllegalArgumentException("Цена должна быть больше 0");
         }
-        this.price = amount;
+        this.price = price;
     }
 
     @Override
