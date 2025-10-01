@@ -3,7 +3,7 @@ package org.skypro.skyshop.model.search;
 import java.util.UUID;
 
 public interface Searchable {
-    // метод, возвращающий, искомый текст.
+    // Метод, возвращающий, искомый текст.
     String searchTerm();
 
     // Контент
@@ -17,5 +17,6 @@ public interface Searchable {
         return getName() + " - " + getContent();
     }
 
+    // Метод получения UUID.
     UUID getId();
 }
