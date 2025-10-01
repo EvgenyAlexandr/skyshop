@@ -1,6 +1,7 @@
 package org.skypro.skyshop.controller;
 
 import org.skypro.skyshop.model.article.Article;
+import org.skypro.skyshop.model.exception.NoSuchProductException;
 import org.skypro.skyshop.model.product.Product;
 import org.skypro.skyshop.model.search.SearchResult;
 import org.skypro.skyshop.service.SearchService;
@@ -45,7 +46,13 @@ public class ShopController {
     //localhost:8080/search?pattern=<какая-то строка>
     @GetMapping("/search")
     public Collection<SearchResult> search(@RequestParam("pattern") String pattern) {
+        Collection<SearchResult> searchResults = searchService.search(pattern);
+        if (searchResults.isEmpty()) {
+            throw new NoSuchProductException("Продукт с таким ID не найден");
+        }
         return searchService.search(pattern);
+
+
     }
 
 
