@@ -30,7 +30,7 @@ public class StorageService {
     public Collection<Article> getAllArticle() {
         return new ArrayList<>(articleMap.values());
     }
-    
+
     // Метод - Добавляем продукты
     private void addPoduct() {
         // Простой продукт
