@@ -10,6 +10,7 @@ import java.util.stream.Stream;
 
 @Service
 public class SearchService {
+    ///  Поисковый сервис
     private final StorageService storageService;
 
     public SearchService(StorageService storageService) {

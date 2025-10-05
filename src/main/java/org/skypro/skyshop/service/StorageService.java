@@ -15,6 +15,7 @@ import java.util.*;
 
 @Service
 public class StorageService {
+    /// Сервис Хранения
     private final Map<UUID, Product> productMap = new HashMap<>();
     private final Map<UUID, Article> articleMap = new HashMap<>();
 
@@ -71,5 +72,4 @@ public class StorageService {
         articleMap.put(mandarinArticle.getId(),  mandarinArticle);
         articleMap.put(applesArticle.getId(),    applesArticle);
     }
-
 }
