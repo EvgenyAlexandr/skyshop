@@ -19,6 +19,7 @@ public class StorageService {
     private final Map<UUID, Product> productMap = new HashMap<>();
     private final Map<UUID, Article> articleMap = new HashMap<>();
 
+    // Конструктор
     public StorageService() {
         addPoduct();
         addArticle();

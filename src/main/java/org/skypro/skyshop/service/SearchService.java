@@ -17,16 +17,22 @@ public class SearchService {
         this.storageService = storageService;
     }
 
+    // Получение данных для поиска
     private Collection<Searchable> getSearchable() {
-        return Stream.concat(storageService.getAllArticle().stream(), storageService.getAllProduct().stream())
-                .collect(Collectors.toList());
+        return Stream.concat(storageService.getAllArticle().stream(),   // Берет все статьи
+                        storageService.getAllProduct().stream())        // Берет все товары
+                .collect(Collectors.toList());                          // Объединяет их в один поток (Stream) и преобразует в список
     }
 
+    // Основной метод поиска
     public Collection<SearchResult> search(String findText) {
         return getSearchable().stream()
-                .filter(Objects::nonNull)
-                .filter(element -> element.searchTerm().contains(findText))
-                .map(element -> (new SearchResult(element.getId(), element.getName(), element.getContent())))
-                .collect(Collectors.toList());
+                .filter(Objects::nonNull)                                             // Шаг 1: убирает null-элементы
+                .filter(element -> element.searchTerm().contains(findText)) // Шаг 2: ищет совпадения
+                .map(element -> new SearchResult(                           // Шаг 3: преобразует в результат
+                        element.getId(),
+                        element.getName(),
+                        element.getContent()))
+                .collect(Collectors.toList());                                        // Шаг 4: собирает в список
     }
 }
