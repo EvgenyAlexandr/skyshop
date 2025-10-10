@@ -31,12 +31,12 @@ public class SearchServiceTest {
     @InjectMocks
     private SearchService searchService;
 
-// Тест
-//1. Поиск при отсутствии объектов
-//2. Поиск при наличии подходящего объекта
-//3. Поиск при наличии объектов, но отсутствии подходящих
+    // Тесты
+    // 1. Поиск при отсутствии объектов StorageService
+    // 2. Поиск при наличии объектов, но отсутствии подходящих
+    // 3. Поиск при наличии подходящего объекта
 
-    // Тест - Поиск при отсутствии объектов
+    // Тест 1 - Поиск при отсутствии объектов StorageService
     @Test
     public void productSearchInTheAbsenceOfAnObject () {
         String findText = "Свекла"; // Искомое слово
@@ -48,24 +48,7 @@ public class SearchServiceTest {
         assertTrue(result.isEmpty());
     }
 
-    // Тест - Поиск при наличии подходящего объекта
-    @Test
-    public void productSearchIfThereIs_a_SuitableObject() {
-        String findText = "Свекла"; // Искомое слово
-        //String findText = "Батон"; // Искомое слово
-
-        Mockito.when(storageService.getAllProduct())                        // Вызываемый метод
-                .thenReturn(List.of(
-                        new SimpleProduct(UUID.randomUUID(), "Свекла",  30),
-                        new SimpleProduct(UUID.randomUUID(), "Капуста", 54)
-                )); // Результат который должен вернуть метод
-        Collection<SearchResult> results = searchService.search(findText);
-
-        // Коллекция не пуста. Есть совпадения.
-        assertFalse(results.isEmpty());
-    }
-
-    // Тест - Поиск при наличии объектов, но отсутствии подходящих
+    // Тест 2 - Поиск при наличии объектов, но отсутствии подходящих
     @Test
     public void searchFor_a_ProductThatIsNotAvailableIfThereIs_a_SuitableObject() {
         //String findText = "Свекла"; // Искомое слово
@@ -80,6 +63,23 @@ public class SearchServiceTest {
 
         // Коллекция пуста. Нет совпадений.
         assertTrue(results.isEmpty());
+    }
+
+    // Тест 3 - Поиск при наличии подходящего объекта
+    @Test
+    public void productSearchIfThereIs_a_SuitableObject() {
+        String findText = "Свекла"; // Искомое слово
+        //String findText = "Батон"; // Искомое слово
+
+        Mockito.when(storageService.getAllProduct())                        // Вызываемый метод
+                .thenReturn(List.of(
+                        new SimpleProduct(UUID.randomUUID(), "Свекла",  30),
+                        new SimpleProduct(UUID.randomUUID(), "Капуста", 54)
+                )); // Результат который должен вернуть метод
+        Collection<SearchResult> results = searchService.search(findText);
+
+        // Коллекция не пуста. Есть совпадения.
+        assertFalse(results.isEmpty());
     }
 
 }
