@@ -5,12 +5,15 @@ import org.skypro.skyshop.model.product.DiscountedProduct;
 import org.skypro.skyshop.model.product.FixPriceProduct;
 import org.skypro.skyshop.model.product.Product;
 import org.skypro.skyshop.model.product.SimpleProduct;
+import org.skypro.skyshop.model.search.Searchable;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 @Service
@@ -21,20 +24,22 @@ public class StorageService {
 
     // Конструктор
     public StorageService() {
-        addPoduct();
+        addProduct();
         addArticle();
     }
 
+    // Все продукты
     public Collection<Product> getAllProduct() {
         return new ArrayList<>(productMap.values());
     }
 
+    // Все Артикулы
     public Collection<Article> getAllArticle() {
         return new ArrayList<>(articleMap.values());
     }
 
     // Метод - Добавляем продукты
-    private void addPoduct() {
+    private void addProduct() {
         // Простой продукт
         SimpleProduct sausage   = new SimpleProduct(UUID.randomUUID(), "Сосиски", 200);
         SimpleProduct bread     = new SimpleProduct(UUID.randomUUID(), "Батон",   54);
@@ -72,5 +77,11 @@ public class StorageService {
         articleMap.put(potatoArticle.getId(),    potatoArticle);
         articleMap.put(mandarinArticle.getId(),  mandarinArticle);
         articleMap.put(applesArticle.getId(),    applesArticle);
+    }
+
+    public Collection<Searchable> getSearchable(){
+        return Stream.concat(productMap.values().stream(),
+                articleMap.values().stream()).
+                collect(Collectors.toList());
     }
 }
