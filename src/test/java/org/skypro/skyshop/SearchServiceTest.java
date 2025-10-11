@@ -6,7 +6,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.skypro.skyshop.model.product.Product;
 import org.skypro.skyshop.model.product.SimpleProduct;
 import org.skypro.skyshop.model.search.SearchResult;
 import org.skypro.skyshop.service.SearchService;
@@ -14,11 +13,9 @@ import org.skypro.skyshop.service.StorageService;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -80,6 +77,10 @@ public class SearchServiceTest {
 
         // Коллекция не пуста. Есть совпадения.
         assertFalse(results.isEmpty());
+        // В полученной коллекции есть искомый текст
+        assertTrue(results.stream()     // Преобразуем коллекцию в поток для обработки
+                .anyMatch(              // Метод возвращает true, если хотя бы один элемент в потоке удовлетворяет условию
+                        searchResult -> searchResult.getName().contains(findText))
+                );
     }
-
 }
