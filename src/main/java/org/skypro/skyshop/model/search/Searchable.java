@@ -2,6 +2,7 @@ package org.skypro.skyshop.model.search;
 
 import java.util.UUID;
 
+// Searchable - Доступный для поиска.
 public interface Searchable {
     // Метод, возвращающий, искомый текст.
     String searchTerm();

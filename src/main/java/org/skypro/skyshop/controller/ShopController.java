@@ -23,11 +23,11 @@ public class ShopController {
     }
 
     private final StorageService storageService;
-    private final SearchService searchService;
+    private final SearchService  searchService;
 
     public ShopController(StorageService storageService, SearchService searchService) {
         this.storageService = storageService;
-        this.searchService = searchService;
+        this.searchService  = searchService;
     }
 
     //localhost:8080/products
@@ -47,7 +47,7 @@ public class ShopController {
     @GetMapping("/search")
     public Collection<SearchResult> search(@RequestParam("pattern") String pattern) {
         Collection<SearchResult> searchResults = searchService.search(pattern);
-        if (searchResults.isEmpty()) {
+        if (searchResults.isEmpty()) {  // Если коллекция пуста.
             throw new NoSuchProductException("Продукт с таким ID не найден");
         }
         return searchService.search(pattern);
