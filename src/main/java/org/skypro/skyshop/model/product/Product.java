@@ -11,11 +11,12 @@ public abstract class Product implements Searchable {
     private final   String  name;
     private final   UUID    id;
 
+    // Конструктор
     public Product(UUID id, String name) {
-        this.id = id;
-        if (("null" == name) || name.isBlank()) {
+        if ((null == name) || name.isBlank()) {
             throw new IllegalArgumentException("Поле Имя не может быть пустым");
         }
+        this.id = id;
         this.name = name;
 
     }

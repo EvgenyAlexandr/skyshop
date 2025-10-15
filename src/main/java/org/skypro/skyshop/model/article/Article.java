@@ -49,8 +49,8 @@ public class Article implements Searchable {
     // Сравнение объектов этого класса
     @Override
     public boolean equals(Object other) {
-        if (this == other) return true;
         if (other == null) return false;
+        if (this == other) return true;
         Searchable art = (Searchable) other;
         return Objects.equals(title, art.getName());
     }

@@ -35,7 +35,7 @@ public class SearchServiceTest {
 
     // Тест 1 - Поиск при отсутствии объектов StorageService
     @Test
-    public void productSearchInTheAbsenceOfAnObject () {
+    public void search_whenNoProducts_shouldReturnEmpty() {
         String findText = "Свекла"; // Искомое слово
 
         // Проверяем - Метод поиска.
@@ -47,15 +47,14 @@ public class SearchServiceTest {
 
     // Тест 2 - Поиск при наличии объектов, но отсутствии подходящих
     @Test
-    public void searchFor_a_ProductThatIsNotAvailableIfThereIs_a_SuitableObject() {
-        //String findText = "Свекла"; // Искомое слово
+    public void search_whenNoMatchingProducts_shouldReturnEmpty() {
         String findText = "Батон"; // Искомое слово
 
-        Mockito.when(storageService.getAllProduct())                        // Вызываемый метод
-                .thenReturn(List.of(
+        Mockito.when(storageService.getAllProduct())     // Вызываемый метод
+                .thenReturn(List.of(                     // Результат который должен вернуть метод
                         new SimpleProduct(UUID.randomUUID(), "Свекла",  30),
                         new SimpleProduct(UUID.randomUUID(), "Капуста", 54)
-                )); // Результат который должен вернуть метод
+                ));
         Collection<SearchResult> results = searchService.search(findText);
 
         // Коллекция пуста. Нет совпадений.
@@ -64,15 +63,14 @@ public class SearchServiceTest {
 
     // Тест 3 - Поиск при наличии подходящего объекта
     @Test
-    public void productSearchIfThereIs_a_SuitableObject() {
+    public void search_whenMatchingProductsExist_shouldReturnResults() {
         String findText = "Свекла"; // Искомое слово
-        //String findText = "Батон"; // Искомое слово
 
-        Mockito.when(storageService.getAllProduct())                        // Вызываемый метод
-                .thenReturn(List.of(
+        Mockito.when(storageService.getAllProduct())     // Вызываемый метод
+                .thenReturn(List.of(                     // Результат который должен вернуть метод
                         new SimpleProduct(UUID.randomUUID(), "Свекла",  30),
                         new SimpleProduct(UUID.randomUUID(), "Капуста", 54)
-                )); // Результат который должен вернуть метод
+                ));
         Collection<SearchResult> results = searchService.search(findText);
 
         // Коллекция не пуста. Есть совпадения.
@@ -82,5 +80,14 @@ public class SearchServiceTest {
                 .anyMatch(              // Метод возвращает true, если хотя бы один элемент в потоке удовлетворяет условию
                         searchResult -> searchResult.getName().contains(findText))
                 );
+
+        /*
+        // В коллекции только один элемент
+        assertEquals(1, results.size());
+        // В полученной коллекции есть искомый текст
+        assertEquals(findText, results.iterator().next().getName());
+        */
+
+
     }
 }

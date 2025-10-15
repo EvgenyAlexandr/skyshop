@@ -24,14 +24,16 @@ public class StorageService {
     public StorageService() {
         addProduct();
         addArticle();
+
+//        basket();
     }
 
-    // Все продукты
+    // Все продукты - Для Web
     public Collection<Product> getAllProduct() {
         return new ArrayList<>(productMap.values());
     }
 
-    // Все Артикулы
+    // Все Артикулы - Для Web
     public Collection<Article> getAllArticle() {
         return new ArrayList<>(articleMap.values());
     }
@@ -39,11 +41,11 @@ public class StorageService {
     // Метод - Добавляем продукты
     private void addProduct() {
         // Простой продукт
-        SimpleProduct sausage   = new SimpleProduct(UUID.randomUUID(), "Сосиски", 200);
-        SimpleProduct bread     = new SimpleProduct(UUID.randomUUID(), "Батон",   54);
+        Product sausage         = new SimpleProduct(UUID.randomUUID(), "Сосиски", 200);
+        Product bread           = new SimpleProduct(UUID.randomUUID(), "Батон",   54);
         // Продукты с фиксированной ценой
-        FixPriceProduct meat    = new FixPriceProduct(UUID.randomUUID(), "Говядина");
-        FixPriceProduct milk    = new FixPriceProduct(UUID.randomUUID(), "Молоко");
+        Product meat            = new FixPriceProduct(UUID.randomUUID(), "Говядина");
+        Product milk            = new FixPriceProduct(UUID.randomUUID(), "Молоко");
         // Товары со скидкой
         Product bananas         = new DiscountedProduct(UUID.randomUUID(), "Бананы",    200, 50);
         Product potato          = new DiscountedProduct(UUID.randomUUID(), "Картофель", 75,  10);
