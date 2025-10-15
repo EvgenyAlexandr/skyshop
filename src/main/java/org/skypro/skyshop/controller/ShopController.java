@@ -15,19 +15,20 @@ import java.util.Collection;
 @RestController             // аннотация Spring для создания REST API
 public class ShopController {
 
-    // http://localhost:8080
-    // http://127.0.0.1:8080
-    @GetMapping             // GET запрос
-    public String hello() {
-        return "Привет, вроде все работает ...";
-    }
-
     private final StorageService storageService;
     private final SearchService  searchService;
 
     public ShopController(StorageService storageService, SearchService searchService) {
         this.storageService = storageService;
         this.searchService  = searchService;
+    }
+
+
+    // http://localhost:8080
+    // http://127.0.0.1:8080
+    @GetMapping             // GET запрос
+    public String hello() {
+        return "Привет, вроде все работает ...";
     }
 
     //localhost:8080/products
