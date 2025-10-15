@@ -80,14 +80,5 @@ public class SearchServiceTest {
                 .anyMatch(              // Метод возвращает true, если хотя бы один элемент в потоке удовлетворяет условию
                         searchResult -> searchResult.getName().contains(findText))
                 );
-
-        /*
-        // В коллекции только один элемент
-        assertEquals(1, results.size());
-        // В полученной коллекции есть искомый текст
-        assertEquals(findText, results.iterator().next().getName());
-        */
-
-
     }
 }
