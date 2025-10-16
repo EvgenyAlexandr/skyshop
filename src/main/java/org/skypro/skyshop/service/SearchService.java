@@ -1,6 +1,5 @@
 package org.skypro.skyshop.service;
 
-import org.apache.catalina.util.ResourceSet;
 import org.skypro.skyshop.model.search.SearchResult;
 import org.skypro.skyshop.model.search.Searchable;
 import org.springframework.stereotype.Service;
@@ -10,18 +9,21 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Service
-public class SearchService {
+public class SearchService {        // Поисковый сервис
     private final StorageService storageService;
 
+    // Конструктор
     public SearchService(StorageService storageService) {
         this.storageService = storageService;
     }
 
+    // Получение данных для поиска
     private Collection<Searchable> getSearchable() {
         return Stream.concat(storageService.getAllArticle().stream(), storageService.getAllProduct().stream())
                 .collect(Collectors.toList());
     }
 
+    // Основной метод поиска
     public Collection<SearchResult> search(String findText) {
         return getSearchable().stream()
                 .filter(Objects::nonNull)

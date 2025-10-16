@@ -7,9 +7,6 @@ import org.skypro.skyshop.model.product.Product;
 import org.skypro.skyshop.model.product.SimpleProduct;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 import java.util.*;
 
 
@@ -34,25 +31,25 @@ public class StorageService {
     // Метод - Добавляем продукты
     private void addPoduct() {
         // Простой продукт
-        SimpleProduct sausage   = new SimpleProduct(UUID.randomUUID(), "Сосиски", 200);
-        SimpleProduct bread     = new SimpleProduct(UUID.randomUUID(), "Батон",   54);
+        Product sausage     = new SimpleProduct(UUID.randomUUID(), "Сосиски", 200);
+        Product bread       = new SimpleProduct(UUID.randomUUID(), "Батон",   54);
         // Продукты с фиксированной ценой
-        FixPriceProduct meat    = new FixPriceProduct(UUID.randomUUID(), "Говядина");
-        FixPriceProduct milk    = new FixPriceProduct(UUID.randomUUID(), "Молоко");
+        Product meat        = new FixPriceProduct(UUID.randomUUID(), "Говядина");
+        Product milk        = new FixPriceProduct(UUID.randomUUID(), "Молоко");
         // Товары со скидкой
-        Product bananas         = new DiscountedProduct(UUID.randomUUID(), "Бананы",    200, 50);
-        Product potato          = new DiscountedProduct(UUID.randomUUID(), "Картофель", 75,  10);
-        Product mandarin        = new DiscountedProduct(UUID.randomUUID(), "Мандарины", 150, 10);
-        Product apples          = new DiscountedProduct(UUID.randomUUID(), "Яблоки",    80,  10);
+        Product bananas     = new DiscountedProduct(UUID.randomUUID(), "Бананы",    200, 50);
+        Product potato      = new DiscountedProduct(UUID.randomUUID(), "Картофель", 75,  10);
+        Product mandarin    = new DiscountedProduct(UUID.randomUUID(), "Мандарины", 150, 10);
+        Product apples      = new DiscountedProduct(UUID.randomUUID(), "Яблоки",    80,  10);
 
-        productMap.put(sausage.getId(),     sausage);
-        productMap.put(bread.getId(),       bread);
-        productMap.put(meat.getId(),            meat);
-        productMap.put(milk.getId(),            milk);
-        productMap.put(bananas.getId(),            bananas);
-        productMap.put(potato.getId(),             potato);
-        productMap.put(mandarin.getId(),           mandarin);
-        productMap.put(apples.getId(),             apples);
+        productMap.put(sausage.getId(), sausage);
+        productMap.put(bread.getId(),   bread);
+        productMap.put(meat.getId(),        meat);
+        productMap.put(milk.getId(),        milk);
+        productMap.put(bananas.getId(),         bananas);
+        productMap.put(potato.getId(),          potato);
+        productMap.put(mandarin.getId(),        mandarin);
+        productMap.put(apples.getId(),          apples);
     }
 
     // Метод - Добавляем Артикул

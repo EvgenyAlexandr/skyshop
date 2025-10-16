@@ -17,7 +17,6 @@ public abstract class Product implements Searchable {
             throw new IllegalArgumentException("Поле Имя не может быть пустым");
         }
         this.name = name;
-
     }
 
     public abstract boolean isSpecial();
