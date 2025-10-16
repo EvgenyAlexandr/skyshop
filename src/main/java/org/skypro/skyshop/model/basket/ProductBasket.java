@@ -1,19 +1,45 @@
 package org.skypro.skyshop.model.basket;
 
 import org.skypro.skyshop.model.product.Product;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.web.context.annotation.SessionScope;
 
 
 import java.util.*;
 
-
+@Component
+@SessionScope //Для каздого пользователя отдельный бин
 public class ProductBasket {
 
     private final Map<String, List<Product>> basket; // Map - Продукты в корзине.
+    private final Map<UUID, Integer > basketV2; // Map - Продукты в корзине.
 
     // Конструктор
     public ProductBasket() {
         basket = new HashMap<>();
+        basketV2 = new HashMap<>();
+
     }
+
+    public void addProductV2(UUID id) {
+        //String productName = product.getName();
+        basketV2.merge(id, 1, Integer::sum) ;
+        System.out.println("Продукт добавлен в корзину");
+    }
+
+
+    // Метод, который печатает содержимое корзины
+    public Map<UUID, Integer> getProductBasket() {
+        // ///
+        return Collections.unmodifiableMap(basketV2);
+    }
+
+
+///////////////////////////////////////////////////////////
+
+
+
 
     // Метод добавления продукта в корзину
     public void addProduct(Product product) {
@@ -21,6 +47,9 @@ public class ProductBasket {
         basket.computeIfAbsent(productName, k -> new ArrayList<>()).add(product);
         System.out.println("Продукт добавлен в корзину");
     }
+
+
+
 
     // Метод получения общей стоимости корзины
     public double getTotalCost() {
@@ -45,6 +74,7 @@ public class ProductBasket {
         int specialCount = getCountSpecialProduct();
         System.out.println("Специальных товаров: " + specialCount);
     }
+
 
 
     // Метод, проверяющий продукт в корзине по имени

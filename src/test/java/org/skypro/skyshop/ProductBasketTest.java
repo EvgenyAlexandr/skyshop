@@ -1,6 +1,7 @@
 package org.skypro.skyshop;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -8,6 +9,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.skypro.skyshop.model.basket.ProductBasket;
 import org.skypro.skyshop.model.product.Product;
+import org.skypro.skyshop.model.product.SimpleProduct;
 
 import java.util.List;
 import java.util.UUID;
@@ -34,20 +36,22 @@ class ProductBasketTest {
 
     // Тест на добавление несуществующего товара
     @Test
+    @DisplayName("Тест на добовление сушествующего товара")
     void testAddNonExistingProduct() {
         // Создаем продукт с пустым именем, что должно вызвать исключение
         assertThrows(IllegalArgumentException.class, () -> {
-            Product invalidProduct = new Product(UUID.randomUUID(), null) {
-                @Override
-                public boolean isSpecial() {
-                return false;
-                }
-
-                @Override
-                public int getPrice() {
-                    return 0;
-                }
-            };
+            Product invalidProduct = new SimpleProduct(UUID.randomUUID(), null, 100);
+            //{
+//                @Override
+//                public boolean isSpecial() {
+//                return false;
+//                }
+//
+//                @Override
+//                public int getPrice() {
+//                    return 0;
+//                }
+           // };
 
             productBasket.addProduct(invalidProduct);
         });
