@@ -24,6 +24,7 @@ public class ShopController {
     private final BasketService  basketService;     // Сервис Корзины
 
     // Конструктор
+    @Autowired
     public ShopController(StorageService storageService, SearchService searchService, BasketService basketService) {
         this.storageService = storageService;
         this.searchService  = searchService;
@@ -56,14 +57,14 @@ public class ShopController {
         return searchService.search(pattern);
     }
 
-    // Добавление продуктов в корзину       http://localhost:8080/shop/basket/d648c957-cad1-4b84-b953-62849f7a3806
+    // Добавление продуктов в корзину       http://localhost:8080/basket/d648c957-cad1-4b84-b953-62849f7a3806
     @GetMapping("/basket/{id}")
     public String addProduct(@PathVariable("id") UUID id) {
         basketService.addToBasket(id);
         return "*Продукт успешно добавлен*";
     }
 
-    // Отображение содержимого корзины      http://localhost:8080/shop/basket
+    // Отображение содержимого корзины      http://localhost:8080/basket
     @GetMapping("/basket")
     public UserBasket getUserBasket() {
         return basketService.getUserBasket();
