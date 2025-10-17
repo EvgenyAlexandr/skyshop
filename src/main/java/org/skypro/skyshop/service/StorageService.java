@@ -20,10 +20,12 @@ public class StorageService {
         addArticle();
     }
 
+    // Метод - Для Web Controller - Все продукты
     public Collection<Product> getAllProduct() {
         return new ArrayList<>(productMap.values());
     }
 
+    // Метод - Для Web Controller - Все Артикулы (Статьи)
     public Collection<Article> getAllArticle() {
         return new ArrayList<>(articleMap.values());
     }
@@ -68,4 +70,10 @@ public class StorageService {
         articleMap.put(mandarinArticle.getId(),  mandarinArticle);
         articleMap.put(applesArticle.getId(),    applesArticle);
     }
+
+    // Метод - Возвращает все продукты по id
+    public Optional<Product> getProductById(UUID id) {
+        return Optional.ofNullable(productMap.get(id));
+    }
+
 }
