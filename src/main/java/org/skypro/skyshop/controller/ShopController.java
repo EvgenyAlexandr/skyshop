@@ -21,13 +21,12 @@ public class ShopController {
 
     private final StorageService storageService;    // Сервис Хранения
     private final SearchService  searchService;     // Поисковый Сервис
+    private final BasketService  basketService;     // Сервис Корзины
 
-    @Autowired
-    private       BasketService  basketService;     // Сервис Корзины
-
-    public ShopController(StorageService storageService, SearchService searchService) {
+    public ShopController(StorageService storageService, SearchService searchService, BasketService basketService) {
         this.storageService = storageService;
-        this.searchService = searchService;
+        this.searchService  = searchService;
+        this.basketService  = basketService;
     }
 
     // http://localhost:8080
