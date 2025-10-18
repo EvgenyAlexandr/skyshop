@@ -79,4 +79,8 @@ public class StorageService {
         articleMap.put(applesArticle.getId(),    applesArticle);
     }
 
+    // Метод - Возвращает все продукты по id
+    public Optional<Product> getProductById(UUID id) {
+        return Optional.ofNullable(productMap.get(id));
+    }
 }
