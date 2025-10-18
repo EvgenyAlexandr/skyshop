@@ -39,8 +39,8 @@ public class StorageService {
         Product sausage   = new SimpleProduct(UUID.randomUUID(), "Сосиски", 200);
         Product bread     = new SimpleProduct(UUID.randomUUID(), "Батон",   54);
         // Продукты с фиксированной ценой
-        Product meat    = new FixPriceProduct(UUID.randomUUID(), "Говядина");
-        Product milk    = new FixPriceProduct(UUID.randomUUID(), "Молоко");
+        Product meat      = new FixPriceProduct(UUID.randomUUID(), "Говядина");
+        Product milk      = new FixPriceProduct(UUID.randomUUID(), "Молоко");
         // Товары со скидкой
         Product bananas         = new DiscountedProduct(UUID.randomUUID(), "Бананы",    200, 50);
         Product potato          = new DiscountedProduct(UUID.randomUUID(), "Картофель", 75,  10);
