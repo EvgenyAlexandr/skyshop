@@ -22,18 +22,10 @@ public class SearchService {
     }
 
     public Collection<SearchResult> search(String findText) {
-//        return getSearchable().stream()
-//                .filter(Objects::nonNull)
-//                .filter(element -> element.searchTerm().contains(findText))
-//                .map(element -> (new SearchResult(element.getId(), element.getName(), element.getContent())))
-//                .collect(Collectors.toList());
-
-        List<SearchResult> results = storageService.getAllProduct().stream()
-                .filter(s -> s.searchTerm().contains(findText))
-                .map(SearchResult::fromSearchable)
-                .toList();
-        return results;
-
-
+        return getSearchable().stream()
+                .filter(Objects::nonNull)
+                .filter(element -> element.searchTerm().contains(findText))
+                .map(element -> (new SearchResult(element.getId(), element.getName(), element.getContent())))
+                .collect(Collectors.toList());
     }
 }
