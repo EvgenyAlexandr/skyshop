@@ -45,12 +45,12 @@ public class ShopController {
     }
 
     //localhost:8080/search
-    //localhost:8080/search?pattern=<какая-то строка>
+    //localhost:8080/search?pattern=<какая-то строка>   http://localhost:8080/search?pattern=Сосиски
     @GetMapping("/search")
     public Collection<SearchResult> search(@RequestParam("pattern") String pattern) {
         Collection<SearchResult> searchResults = searchService.search(pattern);
         if (searchResults.isEmpty()) {
-            throw new NoSuchProductException("Продукт с таким ID не найден");
+            throw new NoSuchProductException("Продукт не найден");
         }
         return searchService.search(pattern);
     }
