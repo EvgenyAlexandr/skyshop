@@ -1,5 +1,6 @@
 package org.skypro.skyshop;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,6 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 @ExtendWith(MockitoExtension.class)
+@DisplayName("Тест поискового сервиса")
 public class SearchServiceTest {
     //Создание и управление moc объектом для SearchService - Заглушка
     @Mock
@@ -28,13 +30,8 @@ public class SearchServiceTest {
     @InjectMocks
     private SearchService searchService;
 
-    // Тесты
-    // 1. Поиск при отсутствии объектов StorageService
-    // 2. Поиск при наличии объектов, но отсутствии подходящих
-    // 3. Поиск при наличии подходящего объекта
-
-    // Тест 1 - Поиск при отсутствии объектов StorageService
     @Test
+    @DisplayName("Тест 1-Поиск при отсутствии объектов")
     public void search_whenNoProducts_shouldReturnEmpty() {
         String findText = "Свекла"; // Искомое слово
 
@@ -45,8 +42,8 @@ public class SearchServiceTest {
         assertTrue(result.isEmpty());
     }
 
-    // Тест 2 - Поиск при наличии объектов, но отсутствии подходящих
     @Test
+    @DisplayName("Тест 2-Поиск при наличии объектов, но отсутствии подходящих")
     public void search_whenNoMatchingProducts_shouldReturnEmpty() {
         String findText = "Батон"; // Искомое слово
 
@@ -61,8 +58,8 @@ public class SearchServiceTest {
         assertTrue(results.isEmpty());
     }
 
-    // Тест 3 - Поиск при наличии подходящего объекта
     @Test
+    @DisplayName("Тест 3-Поиск при наличии подходящего объекта")
     public void search_whenMatchingProductsExist_shouldReturnResults() {
         String findText = "Свекла"; // Искомое слово
 
