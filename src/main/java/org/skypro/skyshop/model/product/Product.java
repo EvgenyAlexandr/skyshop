@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 public abstract class Product implements Searchable {
-    protected final String  TERM_PRODUCT = "PRODUCT";
+    private final   String  TERM_PRODUCT = "PRODUCT";
     private final   String  name;
     private final   UUID    id;
 
