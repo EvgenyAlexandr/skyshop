@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public class Article implements Searchable {
 
-    private static String   TERM_ARTICLE = "ARTICLE";
+    private final String    TERM_ARTICLE = "ARTICLE";
     private final UUID      id;        // UUID — уникального идентификатор
     private final String    title;     // Название Статьи
     private final String    text;      // Текст статьи
